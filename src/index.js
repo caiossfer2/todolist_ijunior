@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 
@@ -12,17 +12,28 @@ function Nav(props){
 }
 
 function Linha(props){
+    
+    const [pathIcone, trocarIcone] = useState("square-icon.png");
+    const [classeTexto, trocarEstadoTexto] = useState("");
 
-    function trocarIcone(){
-        console.log("oi");
+    function teste(path, classeTexto){
+        if(path === "checked-icon.png"){
+            trocarIcone("square-icon.png");
+        }else if(path === "square-icon.png"){
+            trocarIcone("checked-icon.png");
+        }
+
+        if(classeTexto === ""){
+            trocarEstadoTexto("line-through")
+        }else if(classeTexto === "line-through"){
+            trocarEstadoTexto("");
+        }
     }
-
 
     return(
        <div className="linha">   
-            <img onClick = {trocarIcone} className="icon" id="empty" src="square-icon.png" alt='itens não concluidos' /> 
-            <img className="icon" id="check" src="checked-icon.png" alt='itens não concluidos'/> 
-            <p>{props.texto}</p>
+            <img onClick = {() =>teste(pathIcone, classeTexto)} className="icon" src={pathIcone} alt='itens não concluidos' /> 
+            <p className={classeTexto} >{props.texto}</p>
        </div>
     );
 }

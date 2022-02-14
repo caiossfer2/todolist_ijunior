@@ -32,6 +32,9 @@ body{
     font-size: 24px;
 }
 
+.line-through{
+    text-decoration: line-through;
+}
 
 .linhas{
     margin: 64px 0;
@@ -44,18 +47,13 @@ body{
     cursor: pointer;
 }
 
-#check{
-    display: none;
-}
 
 .display-none{
     display: none;
 }
 
-/* #empty{
-     display: none; 
-}
 
- .main-section{
 
- } */
+ /* .main-section{
+
+ }  */
