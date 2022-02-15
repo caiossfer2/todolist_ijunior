@@ -47,13 +47,45 @@ body{
     cursor: pointer;
 }
 
+.x{
+    margin-top: 6.5px;
+    margin-left: 21px;
+    width: 13.18px;
+    height: 13.18px;
+    opacity: 0;
+}
+
+.x-hover{
+    opacity: 1;
+    margin-top: 6.5px;
+    margin-left: 21px;
+    width: 13.18px;
+    height: 13.18px;
+    transition: 0.5s;
+}
+
 
 .display-none{
     display: none;
 }
 
 
+.add-icon{
+    /* margin-top: 34.67px; */
+    width: 26.67px;
+    height: 26.67px;
+}
 
- /* .main-section{
 
- }  */
+#texto-entrada{
+    outline: 0;
+    border: 0;
+    padding-left: 5px;
+    line-height: 25px;
+    font-size: 22px;
+    background-color: #C6E2E9;
+}
+
+.adiciona{
+    display: flex;
+}
