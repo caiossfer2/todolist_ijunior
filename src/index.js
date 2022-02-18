@@ -13,29 +13,35 @@ function Nav(props){
 
 function Linha(props){
     
-    const [pathIcone, trocarIcone] = useState("square-icon.png");
-    const [classeTexto, trocarEstadoTexto] = useState("");
+    const [pathIcone, setIcone] = useState("square-icon.png");
+    const [classeTexto, setClasseTexto] = useState("");
     const [classeX, setClasseX] = useState("x");
 
     function trocarEstadosLinha(path, classeTexto){
         if(path === "checked-icon.png"){
-            trocarIcone("square-icon.png");
+            setIcone("square-icon.png");
         }else if(path === "square-icon.png"){
-            trocarIcone("checked-icon.png");
+            setIcone("checked-icon.png");
         }
 
         if(classeTexto === ""){
-            trocarEstadoTexto("line-through")
+            setClasseTexto("line-through")
         }else if(classeTexto === "line-through"){
-            trocarEstadoTexto("");
+            setClasseTexto("");
         }
+    }
+
+    function removerTarefa(texto, array, setArray){
+        let arr = array;
+        let novoArr = arr.filter(t => t !== texto);
+        setArray(novoArr);
     }
 
     return(
        <div onMouseEnter = {()=> setClasseX("x-hover")} onMouseLeave = {()=> setClasseX("x")} className="linha">   
             <img onClick = {() => trocarEstadosLinha(pathIcone, classeTexto)} className="icon" src={pathIcone} alt='itens não concluidos' /> 
             <p className={classeTexto}>{props.texto}</p>
-            <img className={classeX} src="x.png" alt="x"/>
+            <img onClick = {() => removerTarefa(props.texto, props.arr, props.setArray)} className={classeX} src="x.png" alt="x"/>
        </div>
     );
 }
@@ -43,18 +49,16 @@ function Linha(props){
 
 function Linhas(){ 
 
-    // var arrayTextos = ["Fazer mockup", "Criar página estática", "Aplicar state", "Conectar Eventos", "Teste", "Oi"];
 
-    const[arrayTextos, setArrayTextos] = useState(["Fazer mockup", "Criar página estática", "Aplicar state", "Conectar Eventos", "Teste", "Oi"]);
+    const[arrayTextos, setArrayTextos] = useState([]);
 
     return(
         <div>
         {arrayTextos.map(function(texto, i){
-            return <Linha texto={texto} key={i}/>
+            return <Linha texto={texto} arr={arrayTextos} setArray={setArrayTextos} key={i}/>
         })}
 
         <Adiciona arr={arrayTextos} setArray={setArrayTextos} />
-
         </div>
     );
 }
@@ -63,9 +67,11 @@ function Adiciona(props){
 
     const [inputValue, setInputValue] = useState("");
 
+   
+   
     function adicionarTexto(props, inputValue){
- 
         props.setArray([...props.arr, inputValue]);
+        setInputValue("");
     }
 
 
@@ -79,8 +85,6 @@ function Adiciona(props){
 }
 
 function MainSection(props){
-
-
 
     return (
         <section className="main-section">
