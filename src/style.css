@@ -72,7 +72,6 @@ body{
 
 
 .add-icon{
-    /* margin-top: 34.67px; */
     width: 26.67px;
     height: 26.67px;
 }
@@ -101,6 +100,7 @@ body{
     .linha p{
         font-size: 18px;
         margin-top: -2px;
+        margin-left: 10px;
     }
 
     #texto-entrada{
